@@ -55,7 +55,7 @@
                 </div>
                 <div>
                     <span class="font-bold text-slate-100 tracking-tight block leading-none">Lucas Yvrard</span>
-                    <span class="text-xs font-mono text-sky-400">BTS SIO • Option SISR • Caen</span>
+                    <span class="text-xs font-mono text-sky-400">BTS SIO • Option SISR • E2SE Caen</span>
                 </div>
             </button>
             <nav class="flex items-center gap-2 sm:gap-3">
@@ -79,13 +79,13 @@
             <div class="text-center max-w-3xl mx-auto mb-14">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono mb-5">
                     <i data-lucide="shield-check" class="w-4 h-4"></i>
-                    <span>LUCAS YVRARD • BTS SIO SISR • CAEN</span>
+                    <span>LUCAS YVRARD • BTS SIO SISR • E2SE DIGITAL IT SCHOOL CAEN</span>
                 </div>
                 <h1 class="text-3xl sm:text-5xl font-bold text-white tracking-tight mb-5">
                     Réseaux, Systèmes & <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-emerald-400">Gestion de Parc</span>
                 </h1>
                 <p class="text-slate-400 text-base sm:text-lg leading-relaxed">
-                    Étudiant en deuxième année de <strong class="text-slate-200">BTS Services informatiques aux organisations (Option SISR)</strong> à Caen, je me forme aux réseaux, aux systèmes et à la gestion de parc. Ce portfolio présente mon parcours, mon stage au service informatique de l’E2SE, un TP de formation et mon projet personnel.
+                    Étudiant en deuxième année de <strong class="text-slate-200">BTS Services informatiques aux organisations (Option SISR)</strong> à l'E2SE Caen, je me forme aux réseaux, aux systèmes et à la gestion de parc. Ce portfolio présente mon parcours, mon stage au service informatique de l’E2SE, un TP de formation et mon projet personnel.
                 </p>
             </div>
 
@@ -184,7 +184,7 @@
                                 <span class="text-xs text-slate-400 group-hover:text-emerald-400 transition-colors flex items-center gap-1"><span>En cours</span><i data-lucide="maximize-2" class="w-3.5 h-3.5"></i></span>
                             </div>
                             <h3 class="font-bold text-white text-base mb-1 group-hover:text-emerald-300 transition-colors">BTS Services informatiques aux organisations, option SISR</h3>
-                            <p class="text-xs text-sky-400 font-medium mb-2">Caen</p>
+                            <p class="text-xs text-sky-400 font-medium mb-2">E2SE Digital IT School, Caen</p>
                             <p class="text-xs text-slate-400 leading-relaxed">Formation aux réseaux (HSRP, VLAN, routage), aux systèmes (Debian 13, Windows Server, Docker) et à la gestion de parc informatique.</p>
                         </div>
                     </div>
@@ -334,7 +334,7 @@
                                 <i data-lucide="table-2" class="w-4 h-4 text-purple-800"></i>
                             </div>
                             <h3 class="font-bold text-base text-slate-950 leading-snug mb-2">Tableau de synthèse BTS SIO SISR</h3>
-                            <p class="text-xs text-slate-800 leading-relaxed mb-4">Cartographie des compétences acquises et validées durant la formation et lors des stages professionnels.</p>
+                            <p class="text-xs text-slate-800 leading-relaxed mb-4">Cartographie des compétences acquises et validées durant la formation à l'E2SE Caen et lors des stages professionnels.</p>
                         </div>
                         <div class="pt-3 border-t border-purple-900/15" onclick="event.stopPropagation()">
                             <button onclick="openProjectModal('tableauE5')" class="w-full py-2 px-3 rounded bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors">
@@ -351,7 +351,7 @@
                     <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-400"><i data-lucide="cpu" class="w-5 h-5"></i></div>
                     <div>
                         <h2 class="text-xl font-bold text-white">3. Compétences Techniques (SISR)</h2>
-                        <p class="text-xs text-slate-400">Domaines d'expertise acquis en formation et en stage</p>
+                        <p class="text-xs text-slate-400">Domaines d'expertise acquis en formation à l'E2SE et en stage</p>
                     </div>
                 </div>
 
@@ -1080,19 +1080,82 @@ interface GigabitEthernet0/1
         }
 
         const veilleData = [
-            { tag: "Sécurité • CERT-FR", title: "Alertes et avis de sécurité du CERT-FR", outils: "CERT-FR", synthese: "Suivi des alertes globales, avis et bulletins de sécurité pour anticiper les vulnérabilités et protéger les infrastructures informatiques.", impactSISR: "Permet de rester informé des failles critiques et d'ajuster le durcissement de mes serveurs et pare-feu." },
-            { tag: "Intune • HTMD", title: "Gestion des objets Entra ID & cycle de vie Intune", outils: "HTMD, IntuneStuff, Oliver Kieselbach, Peter van der Woude, Prajwal Desai", synthese: "Étude des limitations d'Entra ID (ex: conservation de 7 jours sur les objets supprimés) pour sécuriser le ciblage de mes déploiements Intune.", impactSISR: "Appliqué au ciblage de mes déploiements de logiciels sous Intune lors de mon stage." },
-            { tag: "Actualité • IT-Connect", title: "Maintien à jour des parcs Windows et stratégies de patch", outils: "IT-Connect", synthese: "Analyse des statistiques de patch management (ex: délais de mise à jour des parcs) et application d'un déploiement par vagues (postes de test).", impactSISR: "Structuration de ma méthode de déploiement progressif des mises à jour sur le parc informatique." }
+            {
+                tag: "Sécurité • CERT-FR", title: "Alertes et avis de sécurité du CERT-FR", outils: "CERT-FR (flux RSS dans Feedbro)",
+                accent: "sky",
+                contexte: "Le CERT-FR, rattaché à l'ANSSI, est le centre gouvernemental de veille, d'alerte et de réponse aux attaques informatiques. Il publie en continu des alertes, des avis de sécurité, des bulletins d'actualité et des rapports de menaces. C'est ma source de référence pour savoir ce qui menace réellement un système d'information.",
+                synthese: "Suivi des alertes globales, avis et bulletins de sécurité pour anticiper les vulnérabilités et protéger les infrastructures informatiques.",
+                pointsCles: [
+                    "<strong class='text-slate-200'>Alerte</strong> : vulnérabilité critique, souvent déjà exploitée, qui demande une réaction rapide.",
+                    "<strong class='text-slate-200'>Avis de sécurité</strong> : vulnérabilité corrigée par un éditeur, avec produits et versions affectés, identifiants CVE et correctifs à appliquer.",
+                    "<strong class='text-slate-200'>Bulletin d'actualité</strong> : synthèse périodique des vulnérabilités à surveiller.",
+                    "Le niveau de risque et les contournements proposés permettent de prioriser sans attendre le correctif."
+                ],
+                demarche: [
+                    "Lecture des nouvelles publications dans Feedbro (collection « Sécurité »).",
+                    "Tri par pertinence : le produit concerné est-il présent dans mon parc ou mes réalisations (Windows, Debian, Docker, Proxmox, Zabbix, Nextcloud) ?",
+                    "Évaluation de la criticité et de l'exposition réelle (service accessible depuis le réseau ou non).",
+                    "Action : mise à jour, contournement ou durcissement, puis note dans ma documentation."
+                ],
+                impactSISR: "Permet de rester informé des failles critiques et d'ajuster le durcissement de mes serveurs et pare-feu.",
+                apprentissage: "Une veille de sécurité n'a d'intérêt que si elle débouche sur une décision : chaque avis pertinent doit aboutir à une action tracée ou à une justification de non-action."
+            },
+            {
+                tag: "Intune • HTMD", title: "Gestion des objets Entra ID & cycle de vie Intune", outils: "HTMD, IntuneStuff, Oliver Kieselbach, Peter van der Woude, Prajwal Desai",
+                accent: "emerald",
+                contexte: "Intune s'appuie sur Entra ID pour identifier les utilisateurs, les appareils et les groupes auxquels sont ciblés les applications et les stratégies. Comprendre le cycle de vie de ces objets (création, suppression, conservation) évite des erreurs de ciblage lors des déploiements.",
+                synthese: "Étude des limitations d'Entra ID (ex: conservation de 7 jours sur les objets supprimés) pour sécuriser le ciblage de mes déploiements Intune.",
+                pointsCles: [
+                    "Les objets supprimés dans Entra ID ne disparaissent pas immédiatement : ils sont conservés pendant une durée limitée (7 jours selon l'article étudié).",
+                    "Un objet recréé n'est pas le même objet : il reçoit un nouvel identifiant, donc les affectations qui ciblaient l'ancien ne le concernent plus.",
+                    "Le ciblage par groupes (plutôt que par appareils isolés) rend les déploiements plus stables et plus lisibles.",
+                    "Les blogs spécialisés comparent plusieurs approches et signalent les comportements non documentés."
+                ],
+                demarche: [
+                    "Lecture croisée de plusieurs sources (HTMD, IntuneStuff, blogs d'experts) pour confirmer le comportement.",
+                    "Vérification de l'état des groupes et des appareils avant tout déploiement.",
+                    "Contrôle du résultat dans la console Intune après affectation.",
+                    "Intégration de ces vérifications dans ma procédure de déploiement."
+                ],
+                impactSISR: "Appliqué au ciblage de mes déploiements de logiciels sous Intune lors de mon stage.",
+                apprentissage: "Croiser les sources est indispensable : un comportement observé sur un blog doit être confirmé par la documentation officielle ou un test avant d'être appliqué en production."
+            },
+            {
+                tag: "Actualité • IT-Connect", title: "Maintien à jour des parcs Windows et stratégies de patch", outils: "IT-Connect",
+                accent: "purple",
+                contexte: "Maintenir un parc Windows à jour est l'un des leviers de sécurité les plus efficaces, mais une mise à jour déployée partout en même temps peut aussi provoquer des incidents de masse. Les articles d'IT-Connect m'ont aidé à structurer une stratégie de patch management.",
+                synthese: "Analyse des statistiques de patch management (ex: délais de mise à jour des parcs) et application d'un déploiement par vagues (postes de test).",
+                pointsCles: [
+                    "Les délais d'application des correctifs sont souvent trop longs, ce qui laisse une fenêtre d'exposition aux attaquants.",
+                    "Un correctif doit être testé avant d'être généralisé, car une mise à jour peut casser une application métier ou un pilote.",
+                    "Le déploiement par vagues limite l'impact d'une mise à jour défaillante et permet un retour arrière maîtrisé.",
+                    "Le suivi de conformité (postes à jour, en échec, en attente) fait partie du patch management."
+                ],
+                demarche: [
+                    "Vague 1 : postes de test et équipe informatique.",
+                    "Vague 2 : groupe pilote d'utilisateurs représentatifs.",
+                    "Vague 3 : généralisation à l'ensemble du parc après validation.",
+                    "À chaque vague : contrôle de l'état de déploiement et traitement des échecs avant de poursuivre."
+                ],
+                impactSISR: "Structuration de ma méthode de déploiement progressif des mises à jour sur le parc informatique.",
+                apprentissage: "Sécurité et disponibilité vont ensemble : appliquer vite les correctifs critiques, mais de façon progressive et contrôlée."
+            }
         ];
 
         function openVeilleZoom(index) {
             const v = veilleData[index];
+            const li = arr => arr.map(x => `<li class="flex gap-2"><span class="text-${v.accent}-400 mt-0.5">▸</span><span class="leading-relaxed">${x}</span></li>`).join('');
+            const steps = arr => arr.map((x, i) => `<li class="flex gap-3"><span class="shrink-0 w-6 h-6 rounded-full bg-${v.accent}-500/15 border border-${v.accent}-500/30 text-${v.accent}-300 font-mono text-xs flex items-center justify-center">${i + 1}</span><span class="leading-relaxed">${x}</span></li>`).join('');
             showModal(`
                 <span class="inline-block px-3 py-1 rounded-md bg-purple-500/15 border border-purple-500/30 text-purple-300 font-mono text-xs mb-3">VEILLE TECHNOLOGIQUE • ${v.tag}</span>
                 <h3 class="text-xl sm:text-2xl font-bold text-white mb-4">${v.title}</h3>
                 <div class="space-y-4 text-sm text-slate-300">
+                    <div class="p-4 rounded-xl bg-slate-950 border border-slate-800"><h4 class="font-semibold text-slate-400 text-xs uppercase font-mono mb-1.5">Contexte</h4><p class="leading-relaxed">${v.contexte}</p></div>
                     <div class="p-4 rounded-xl bg-slate-950 border border-slate-800"><h4 class="font-semibold text-sky-400 text-xs uppercase font-mono mb-1.5">Synthèse</h4><p class="leading-relaxed">${v.synthese}</p></div>
+                    <div class="p-4 rounded-xl bg-slate-950 border border-slate-800"><h4 class="font-semibold text-amber-400 text-xs uppercase font-mono mb-2">Points clés</h4><ul class="space-y-1.5">${li(v.pointsCles)}</ul></div>
+                    <div class="p-4 rounded-xl bg-slate-950 border border-slate-800"><h4 class="font-semibold text-purple-400 text-xs uppercase font-mono mb-2">Ma démarche</h4><ol class="space-y-2">${steps(v.demarche)}</ol></div>
                     <div class="p-4 rounded-xl bg-slate-950 border border-slate-800"><h4 class="font-semibold text-emerald-400 text-xs uppercase font-mono mb-1.5">Lien SISR</h4><p class="leading-relaxed">${v.impactSISR}</p></div>
+                    <div class="p-4 rounded-xl bg-slate-950 border border-slate-800"><h4 class="font-semibold text-rose-300 text-xs uppercase font-mono mb-1.5">Ce que j'en retiens</h4><p class="leading-relaxed">${v.apprentissage}</p></div>
                     <div class="flex items-center gap-2 text-xs font-mono text-slate-400 pt-2"><i data-lucide="rss" class="w-4 h-4 text-amber-400"></i><span>Sources : ${v.outils}</span></div>
                 </div>
             `);
