@@ -1002,32 +1002,78 @@ interface GigabitEthernet0/1
         }
 
         function openCahierDesCharges() {
+            const pdf = "cahier%20des%20charges/Cahier_des_charges_supervision_et_sauvegarde.pdf";
             showModal(`
-                <div class="flex items-center gap-2 text-amber-400 font-mono text-xs mb-2"><i data-lucide="clipboard-list" class="w-4 h-4"></i><span>CAHIER DES CHARGES — RÉALISATION 3 (ÉPREUVE E6)</span></div>
-                <h3 class="text-xl sm:text-2xl font-bold text-white mb-4">Supervision et sauvegarde d'une infrastructure de services</h3>
+                <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b border-slate-800 pr-10">
+                    <div>
+                        <span class="inline-block px-2.5 py-0.5 rounded bg-amber-500/15 border border-amber-500/30 text-amber-300 font-mono text-xs mb-1">RÉSUMÉ CAHIER DES CHARGES • RÉALISATION 3 (ÉPREUVE E6)</span>
+                        <h3 class="text-xl font-bold text-white">Supervision et sauvegarde d'une infrastructure de services</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <a href="${pdf}" target="_blank" rel="noopener" class="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-600 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition-colors">
+                            <i data-lucide="external-link" class="w-3.5 h-3.5 text-amber-400"></i><span>Ouvrir dans une autre fenêtre</span>
+                        </a>
+                        <a href="${pdf}" download="Cahier_des_charges_supervision_et_sauvegarde.pdf" class="px-3 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold flex items-center gap-1.5 transition-colors shadow-lg shadow-amber-500/20">
+                            <i data-lucide="download" class="w-3.5 h-3.5"></i><span>Télécharger le PDF</span>
+                        </a>
+                    </div>
+                </div>
+
                 <div class="space-y-4 text-xs sm:text-sm text-slate-300">
                     <div class="p-4 rounded-xl bg-slate-950 border border-slate-800">
-                        <h4 class="font-bold text-amber-300 mb-1">1. Contexte & Expression du besoin</h4>
-                        <p class="leading-relaxed">Un service Nextcloud hébergé sous Docker sans supervision ni sauvegarde expose l'organisation à des coupures non détectées et à une perte définitive des données. L'objectif est de superviser 3 serveurs Debian 13 avec Zabbix 7.0 (alertes Discord en &lt; 2 min) et d'automatiser les sauvegardes chiffrées avec restic chaque nuit à 02h00.</p>
+                        <h4 class="font-bold text-amber-300 uppercase font-mono text-xs mb-1.5">1. Contexte & Besoin</h4>
+                        <p class="leading-relaxed">Nextcloud était déjà installé dans Docker lors d'un TP, mais sans suivi ni protection : si le serveur s'arrête, personne n'est prévenu, et si les données disparaissent, rien n'est prévu pour les récupérer. Le projet répond à deux besoins : <strong>savoir très vite quand le service tombe</strong> et <strong>pouvoir restaurer les données</strong>.</p>
                     </div>
+
+                    <div class="p-4 rounded-xl bg-slate-950 border border-slate-800">
+                        <h4 class="font-bold text-emerald-300 uppercase font-mono text-xs mb-2">2. Objectifs</h4>
+                        <ul class="space-y-1.5 list-disc list-inside">
+                            <li>Superviser 3 serveurs avec <strong>Zabbix 7.0</strong> : disponibilité, charge, disque, service Docker, accès HTTPS de Nextcloud.</li>
+                            <li>Recevoir une alerte <strong>Discord en moins de 2 minutes</strong> quand Nextcloud est inaccessible, puis un message de retour à la normale.</li>
+                            <li>Sauvegarder Nextcloud chaque nuit avec <strong>restic</strong> (chiffré et dédupliqué) sur un serveur séparé, et prouver qu'une restauration fonctionne.</li>
+                            <li>Sécuriser les accès (pare-feu, Fail2ban, SSH par clé), donner un accès au jury et permettre l'administration à distance.</li>
+                        </ul>
+                    </div>
+
                     <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 overflow-x-auto">
-                        <h4 class="font-bold text-sky-300 mb-2">2. Périmètre technique (Proxmox VE 9.2 • VLAN 22 : 172.31.22.0/24)</h4>
+                        <h4 class="font-bold text-sky-300 uppercase font-mono text-xs mb-2">3. Environnement (Proxmox VE • VLAN 22 : 172.31.22.0/24)</h4>
                         <table class="w-full text-left border-collapse text-xs font-mono">
-                            <thead><tr class="border-b border-slate-800 text-slate-400"><th class="py-1.5">VM (Debian 13)</th><th class="py-1.5">IP</th><th class="py-1.5">Specs</th><th class="py-1.5">Rôle</th></tr></thead>
+                            <thead><tr class="border-b border-slate-800 text-slate-400"><th class="py-1.5 pr-3">VM (Debian 13)</th><th class="py-1.5 pr-3">IP</th><th class="py-1.5 pr-3">Ressources</th><th class="py-1.5">Rôle</th></tr></thead>
                             <tbody class="divide-y divide-slate-800/60">
-                                <tr><td class="py-1.5 font-bold text-emerald-300">SRV-SERVICES</td><td>172.31.22.11</td><td>3 vCPU, 3 Go</td><td>Nextcloud Docker (HTTPS 443), client restic, zabbix-agent2</td></tr>
-                                <tr><td class="py-1.5 font-bold text-sky-300">SRV-SUPERVISION</td><td>172.31.22.12</td><td>2 vCPU, 2 Go</td><td>Zabbix 7.0, Apache, MariaDB, Discord, Tailscale</td></tr>
-                                <tr><td class="py-1.5 font-bold text-amber-300">SRV-SAUVEGARDE</td><td>172.31.22.13</td><td>1 vCPU, 1 Go</td><td>Dépôt /srv/restic (SFTP chrooté), zabbix-agent2</td></tr>
+                                <tr><td class="py-1.5 pr-3 font-bold text-emerald-300">SRV-SERVICES</td><td class="pr-3">172.31.22.11</td><td class="pr-3">3 vCPU, 3 Go, 25 Go</td><td>Nextcloud Docker (HTTPS 443), client restic</td></tr>
+                                <tr><td class="py-1.5 pr-3 font-bold text-sky-300">SRV-SUPERVISION</td><td class="pr-3">172.31.22.12</td><td class="pr-3">2 vCPU, 2 Go, 20 Go</td><td>Zabbix 7.0, alertes Discord, Tailscale</td></tr>
+                                <tr><td class="py-1.5 pr-3 font-bold text-amber-300">SRV-SAUVEGARDE</td><td class="pr-3">172.31.22.13</td><td class="pr-3">1 vCPU, 1 Go, 30 Go</td><td>Dépôt restic (SFTP, compte sans shell)</td></tr>
+                            </tbody>
+                        </table>
+                        <p class="mt-3 text-slate-400">Adresses fixes, pas de DHCP. Pare-feu ufw dans chaque VM. Accès depuis l'école en 172.31.99.1, depuis chez moi via Tailscale (routeur de sous-réseau).</p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-950 border border-slate-800">
+                        <h4 class="font-bold text-amber-300 uppercase font-mono text-xs mb-2">4. Exigences principales</h4>
+                        <ul class="space-y-1.5 list-disc list-inside">
+                            <li><strong>Supervision :</strong> agents Zabbix sur les 3 serveurs, contrôle HTTPS de Nextcloud toutes les 20 s, déclencheur Haute après 3 échecs.</li>
+                            <li><strong>Sauvegarde :</strong> timer systemd à 02:00, Nextcloud en mode maintenance pendant la copie, rétention 7 quotidiennes et 4 hebdomadaires, copie chiffrée du dépôt hors de Proxmox.</li>
+                            <li><strong>Sécurité :</strong> ufw en refus par défaut, Fail2ban (5 échecs en 10 min), SSH par clé sans connexion root, compte <code class="text-emerald-300">jury</code> supprimé après la soutenance.</li>
+                            <li><strong>Contraintes :</strong> ressources limitées au pool Proxmox, ICMP filtré depuis mon poste, certificat auto-signé, logiciels libres uniquement.</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 overflow-x-auto">
+                        <h4 class="font-bold text-sky-300 uppercase font-mono text-xs mb-2">5. Critères de validation (recette T1 à T9)</h4>
+                        <table class="w-full text-left border-collapse text-xs">
+                            <tbody class="divide-y divide-slate-800/60">
+                                <tr><td class="py-1.5 pr-3 font-mono font-bold text-sky-300">T1-T2</td><td>Arrêt puis redémarrage de <code class="text-sky-300">nc-web</code> : alerte et message « Resolved » sur Discord.</td></tr>
+                                <tr><td class="py-1.5 pr-3 font-mono font-bold text-sky-300">T3</td><td>Arrêt de SRV-SAUVEGARDE : alertes ping puis agent, résolues au redémarrage.</td></tr>
+                                <tr><td class="py-1.5 pr-3 font-mono font-bold text-sky-300">T4-T5</td><td>Snapshot automatique à 02:00 ; restauration d'un fichier avec même SHA-256 et <code class="text-sky-300">restic check</code> sans erreur.</td></tr>
+                                <tr><td class="py-1.5 pr-3 font-mono font-bold text-sky-300">T6-T7</td><td>Bannissement Fail2ban ; scan nmap : seuls les ports prévus sont ouverts.</td></tr>
+                                <tr><td class="py-1.5 pr-3 font-mono font-bold text-sky-300">T8-T9</td><td>SSH refusé sans clé et pour root ; compte jury fonctionnel avec sudo.</td></tr>
                             </tbody>
                         </table>
                     </div>
+
                     <div class="p-4 rounded-xl bg-slate-950 border border-slate-800">
-                        <h4 class="font-bold text-emerald-300 mb-2">3. Exigences & Protocole de recette (Tests T1 à T9)</h4>
-                        <ul class="space-y-1.5 text-xs list-disc list-inside">
-                            <li><strong>Supervision & Alerting (T1-T3) :</strong> Détection d'arrêt de conteneur (<code class="text-sky-300">nc-web</code>) ou de perte d'hôte via ICMP/Zabbix et notification Discord + retour <em>Resolved</em>.</li>
-                            <li><strong>Sauvegarde & Intégrité (T4-T5) :</strong> Sauvegarde quotidienne à 02h00 (<code class="text-sky-300">systemd timer</code>), vérification SHA-256 après restauration et <code class="text-sky-300">restic check</code> sans erreur.</li>
-                            <li><strong>Sécurité & Accès Jury (T6-T9) :</strong> Filtrage UFW, bannissement Fail2ban, SSH par clé (<code class="text-sky-300">PermitRootLogin no</code>) et compte <code class="text-emerald-300">jury</code> dédié.</li>
-                        </ul>
+                        <h4 class="font-bold text-rose-300 uppercase font-mono text-xs mb-2">6. Limites connues</h4>
+                        <p class="leading-relaxed">Docker contourne ufw (port 443 joignable depuis tout le VLAN), certificat auto-signé, interface Zabbix en HTTP sur réseau interne, copie hors Proxmox du dépôt restic faite à la main.</p>
                     </div>
                 </div>
             `);
