@@ -421,7 +421,44 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <!-- BLOC : MON ÉCOSYSTÈME D'APPRENTISSAGE (Mis à jour avec Feedbro, les 9 sources et fiches de veille) -->
+                <div class="rounded-2xl bg-slate-900/90 border border-slate-800 p-6 sm:p-8 shadow-xl mb-8">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0 mt-1">
+                            <i data-lucide="book-open-check" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-purple-500/10 border border-purple-500/20 text-purple-300 font-mono text-xs mb-2">
+                                <span>ORGANISER SON DÉVELOPPEMENT PROFESSIONNEL</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-3">Comment je me forme et je reste informé</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                Ma problématique : <strong class="text-slate-200">comment gérer et sécuriser un parc Windows, et rester informé des menaces ?</strong> Elle vient de mon stage, où je gérais des postes avec Intune. Pour y répondre, je m'appuie sur <strong class="text-slate-200">9 sources</strong> et sur une méthode en quatre temps :
+                            </p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-300">
+                                <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800">
+                                    <div class="flex items-center gap-2 font-semibold text-sky-400 mb-1"><i data-lucide="rss" class="w-4 h-4"></i><span>1. Collecte avec Feedbro</span></div>
+                                    <p class="leading-relaxed">Mes 9 sources (dont HTMD, IntuneStuff, Oliver Kieselbach, Peter van der Woude, Prajwal Desai, CERT-FR et IT-Connect) sont regroupées dans <strong class="text-slate-200">Feedbro</strong>, en 2 collections, et consultées plusieurs fois par semaine.</p>
+                                </div>
+                                <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800">
+                                    <div class="flex items-center gap-2 font-semibold text-emerald-400 mb-1"><i data-lucide="file-text" class="w-4 h-4"></i><span>2. Fiches de veille</span></div>
+                                    <p class="leading-relaxed">Quand un article est utile, je rédige une fiche qui le résume et explique ce que j'en fais : la rétention de 7 jours d'Entra ID pour mes ciblages Intune, le déploiement des mises à jour par vagues.</p>
+                                </div>
+                                <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800">
+                                    <div class="flex items-center gap-2 font-semibold text-amber-400 mb-1"><i data-lucide="cpu" class="w-4 h-4"></i><span>3. Tests sur mon lab</span></div>
+                                    <p class="leading-relaxed">Je teste les nouveautés sur mon lab Proxmox VE 9.2 (Debian 13) et sur Cisco Packet Tracer.</p>
+                                </div>
+                                <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800">
+                                    <div class="flex items-center gap-2 font-semibold text-purple-400 mb-1"><i data-lucide="wrench" class="w-4 h-4"></i><span>4. Documentation</span></div>
+                                    <p class="leading-relaxed">Je documente mes résolutions d'incidents, avec l'analyse des journaux (<code class="text-sky-300">journalctl</code>), pour capitaliser.</p>
+                                </div>
+                            </div>
+                            <p class="text-slate-300 text-sm leading-relaxed mt-4">Mon projet Nextcloud est né de cette démarche : j'ai cherché moi-même ce qui manquait pour passer en production, c'est-à-dire de la supervision et de la sauvegarde.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div onclick="openVeilleZoom(0)" class="veille-card rounded-xl bg-slate-900 border border-slate-800 p-6 flex flex-col justify-between group">
                         <div>
                             <div class="flex items-center justify-between mb-4">
@@ -456,42 +493,6 @@
                             <p class="text-xs text-slate-400 leading-relaxed mb-4">Analyse des statistiques de patch management (ex: délais de mise à jour des parcs) et application d'un déploiement par vagues (postes de test).</p>
                         </div>
                         <div class="pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-500"><span>Sources : IT-Connect</span><span class="text-purple-400 font-medium">Lire la fiche →</span></div>
-                    </div>
-                </div>
-
-                <!-- BLOC : MON ÉCOSYSTÈME D'APPRENTISSAGE (Mis à jour avec Feedbro, les 9 sources et fiches de veille) -->
-                <div class="rounded-2xl bg-slate-900/90 border border-slate-800 p-6 sm:p-8 shadow-xl">
-                    <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0 mt-1">
-                            <i data-lucide="book-open-check" class="w-5 h-5"></i>
-                        </div>
-                        <div>
-                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-purple-500/10 border border-purple-500/20 text-purple-300 font-mono text-xs mb-2">
-                                <span>ORGANISER SON DÉVELOPPEMENT PROFESSIONNEL</span>
-                            </div>
-                            <h3 class="text-lg font-bold text-white mb-3">Mon écosystème d'apprentissage et de veille</h3>
-                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
-                                Pour répondre à ma problématique (comment gérer et sécuriser un parc Windows et rester informé des menaces), je m'appuie sur un écosystème structuré autour de <strong class="text-slate-200">9 sources officielles et spécialisées</strong> :
-                            </p>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-300">
-                                <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800">
-                                    <div class="flex items-center gap-2 font-semibold text-sky-400 mb-1"><i data-lucide="rss" class="w-4 h-4"></i><span>Collecte RSS via Feedbro</span></div>
-                                    <p class="leading-relaxed">Regroupement de mes 9 sources (HTMD, IntuneStuff, Oliver Kieselbach, Peter van der Woude, Prajwal Desai, CERT-FR et IT-Connect) dans <strong class="text-slate-200">Feedbro</strong> réparti en 2 collections, consulté plusieurs fois par semaine.</p>
-                                </div>
-                                <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800">
-                                    <div class="flex items-center gap-2 font-semibold text-emerald-400 mb-1"><i data-lucide="file-text" class="w-4 h-4"></i><span>Fiches de Veille Appliquées</span></div>
-                                    <p class="leading-relaxed">Synthèse des articles clés : ex. la règle de rétention Entra ID (7 jours) pour sécuriser mes ciblages Intune, et les statistiques IT-Connect sur le patch management menant à un déploiement par vagues.</p>
-                                </div>
-                                <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800">
-                                    <div class="flex items-center gap-2 font-semibold text-amber-400 mb-1"><i data-lucide="cpu" class="w-4 h-4"></i><span>Lab & Expérimentation</span></div>
-                                    <p class="leading-relaxed">Test et mise en pratique des nouveautés sur mon lab Proxmox VE 9.2 (Debian 13) et Cisco Packet Tracer pour valider les concepts techniques.</p>
-                                </div>
-                                <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800">
-                                    <div class="flex items-center gap-2 font-semibold text-purple-400 mb-1"><i data-lucide="wrench" class="w-4 h-4"></i><span>Résolution & Documentation</span></div>
-                                    <p class="leading-relaxed">Analyse des journaux (<code class="text-sky-300">journalctl</code>) et rédaction de documentations techniques rigoureuses pour capitaliser sur mes résolutions d'incidents.</p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -928,7 +929,7 @@ interface GigabitEthernet0/1
                 badge: "Épreuve E5 • Tableau de synthèse BTS SIO SISR",
                 badgeColor: "bg-purple-500/15 text-purple-300 border-purple-500/30",
                 title: "Tableau de synthèse des compétences — BTS SIO SISR",
-                context: "Cartographie complète reliant chacune des 5 compétences du référentiel officiel aux preuves concrètes issues de mon stage E2SE, de mon TP HSRP et de mon projet personnel.",
+                context: "Cartographie complète reliant chacune des 6 compétences du référentiel officiel aux preuves concrètes issues de mon stage E2SE, de mon TP HSRP, de ma veille et de mon projet personnel.",
                 isTableauReferentiel: true
             }
         };
@@ -980,6 +981,12 @@ interface GigabitEthernet0/1
                                     <td class="py-3 px-4 font-bold text-white align-top">Mettre à disposition un service informatique sécurisé</td>
                                     <td class="py-3 px-4 leading-relaxed">
                                         <strong class="text-sky-300">TP HSRP & Projet personnel :</strong> Mise en œuvre d'une haute disponibilité réseau (protocole HSRP sur Cisco 1941) et sécurisation robuste des services (pare-feu UFW, Fail2ban, SSH par clé et sauvegardes chiffrées nocturnes via restic).
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-slate-800/40 transition-colors">
+                                    <td class="py-3 px-4 font-bold text-white align-top">Organiser son développement professionnel</td>
+                                    <td class="py-3 px-4 leading-relaxed">
+                                        <strong class="text-emerald-300">Veille & Projet personnel :</strong> Veille structurée autour de 9 sources regroupées dans Feedbro (2 collections, consultées plusieurs fois par semaine), 3 fiches de veille appliquées (CERT-FR, Entra ID, patch management), tests des nouveautés sur mon lab Proxmox et Packet Tracer, et documentation de mes résolutions d'incidents. Mon projet Nextcloud est né de cette démarche.
                                     </td>
                                 </tr>
                             </tbody>
